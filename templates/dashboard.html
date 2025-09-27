@@ -1,0 +1,211 @@
+<!doctype html>
+<!-- MI Project Front-end-->
+<html lang="en">
+
+<style type='text/css'>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+
+    body {
+        /* background-image: url('https://img.freepik.com/premium-photo/empty-white-classroom-background-with-green-chalkboard-table-seat-wooden-floor_10307-1501.jpg?w=2000'); */
+        background-color: #0b4c61;
+        background-size: cover;
+        font-family: sans-serif;
+        margin-top: 40px;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+    margin: 50px 0 0 100px;
+    }
+
+    .tile {
+    width:160px;
+    height:180px;
+    border-radius:4px;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.15);
+    margin-top:20px;
+    margin-left:20px;
+    float:left;
+    }
+
+    .tile .header {
+    height:120px;
+    background-color:#f4f4f4;
+    border-radius: 4px 4px 0 0;
+    color:white;
+    font-weight:300;
+    }
+
+    .header {
+    width:160px;
+    float:left;
+    }
+
+    .tile .header .count {
+    font-size: 48px;
+    text-align:center;
+    padding:10px 0 0;
+    }
+
+    .tile .header .title {
+    font-size: 20px;
+    text-align:center;
+    }
+
+    .tile .body {
+    height:60px;
+    border-radius: 0 0 4px 4px;
+    color:#333333;
+    background-color:white;
+    }
+
+    .tile .body .title {
+        text-align:center;
+        font-size:20px;
+        padding-top:2%;
+    }
+
+    .tile.job .header {
+    background: linear-gradient(to bottom right, #609931, #87bc27);
+    }
+
+    .tile.job  .body {
+    color: #609931;
+    }
+
+    table {
+        border: 1px;
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 86%;
+        margin: auto;
+    }
+
+    td,
+    th {
+        border: 1px solid black !important;
+        padding: 5px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #04AA6D;
+    }
+
+</style>
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>Face Recognition Based Attendance System</title>
+</head>
+
+<body>
+
+    <div class='mt-3 text-center'>
+        <h1 style="width: auto;margin: auto;color: rgb(0, 0, 0);padding: 11px;font-size: 44px;">Face Recognition Based Attendance System</h1>
+    </div>
+
+    <div class='mt-3 text-center'>
+        <h3 style="font-size: 22px;color:rgb(15, 15, 14);">{{ hostelname }}</h3>
+    </div>
+
+    <div class='mt-3 text-center'>
+        <h2 style="font-size: 22px;color:rgb(15, 15, 14);"><b>{{ datetoday }}</b></h2>
+    </div>
+
+    <div style="padding: 20px;margin: 20px;">
+
+        <ul>
+        {% for i in range(3) %}
+            {% if fstates[i] == 'Y' %}
+            <li><a class="active" href="/updateftype?redirect=dashboard&ftype={{ ftypes[i] }}">{{ fnames[i] }}</a></li>
+            {% else %}
+            <li><a href="/updateftype?redirect=dashboard&ftype={{ ftypes[i] }}">{{ fnames[i] }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+        <div class="container">
+            <a style="text-decoration: none;max-width: 300px;" href="/adduser">
+            <div class="tile job">
+              <div class="header">
+                <div class="count">{{ totalreg }}</div>
+                <div class="title">Add User</div>
+              </div>
+              <div class="body">
+                <div class="title">To register new user</div>
+              </div>
+            </div>
+            </a>
+            <a style="text-decoration: none;max-width: 300px;" href="/startattn">
+            <div class="tile job">
+                <div class="header">
+                  <div class="count">{{ totalpresent }}</div>
+                  <div class="title">Attendence</div>
+                </div>
+                <div class="body">
+                  <div class="title">To take attendence</div>
+                </div>
+            </div>
+            </a>
+            <a style="text-decoration: none;max-width: 300px;" href="/absentees">
+            <div class="tile job">
+                <div class="header">
+                  <div class="count">{{ totalabsent }}</div>
+                  <div class="title">Absentees</div>
+                </div>
+                <div class="body">
+                  <div class="title">View list of absentees</div>
+                </div>
+            </div>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
