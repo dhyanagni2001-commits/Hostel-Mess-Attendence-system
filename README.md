@@ -1,14 +1,40 @@
-# UE20CS302-Machine-Learning-Project
-Attendance Manangement System Using Face Detection  
+# 🍽️ Hostel Mess Attendance System (OpenCV)
 
-This system aims to build an effective class attendance system using face recognition
-techniques. The system will detect faces using haarcascade_frontface model available in OpenCV and then recognize the faces using a KNN model. After recognition, it will mark the attendance of the recognized student in a CSV file  
+## Overview
+The **Hostel Mess Attendance System** is an automated attendance solution that uses **computer vision** to mark student attendance in a hostel mess. The system detects and recognizes faces using **OpenCV and Haar Cascade classifiers**, eliminating manual attendance and reducing errors.
 
-To run this app we must have flask installed.  
+---
 
-Instructions to run:  
-`git clone https://github.com/Vismaya2811/UE20CS302-Machine-Learning-Project.git`  
+## Features
+- 📸 Real-time face detection using Haar Cascade
+- 🧠 Automated attendance marking
+- 🗂️ Student face dataset management
+- 📄 Attendance stored digitally
+- ⚡ Fast and contactless system
 
-`cd ../UE20CS302-Machine-Learning-Project/`  
+---
 
-`python -m flask run`  
+## Tech Stack
+- Python  
+- OpenCV  
+- Haar Cascade Classifier  
+- NumPy  
+- CSV  (for attendance storage)
+
+---
+
+## Working
+1. Camera captures live video feed  
+2. Faces are detected using Haar Cascade  
+3. Detected faces are matched with stored data  
+4. Attendance is marked automatically  
+5. Records are saved for future reference  
+
+---
+
+## Setup
+```bash
+pip install opencv-python numpy
+python main.py
+
+
